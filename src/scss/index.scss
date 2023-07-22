@@ -1,0 +1,56 @@
+@import "./variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $color-grey-dark;
+  padding: 0.5rem;
+}
+
+.nav-link {
+  &.active {
+    background-color: rgba($color-primary, $alpha: 0.4) !important;
+
+    color: $color-primary-dark !important;
+  }
+}
+
+.custom-active-link {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+}
+
+.btn-primary {
+  background: $color-primary !important;
+  box-shadow: 0 4px 9px -4px $color-primary-light;
+
+  &:hover {
+    box-shadow: 10 4px 9px 44px $color-primary-light !important;
+  }
+}
+
+.form-control:focus ~ .form-notch div:first-child {
+  border-color: $color-primary !important;
+}
+.form-control:focus ~ .form-notch div:nth-child(2) {
+  border-bottom-color: $color-primary !important;
+}
+.form-control:focus ~ .form-notch div:last-child {
+  border-color: $color-primary !important;
+}
+
+.form-control:focus ~ .form-label {
+  color: $color-primary-dark !important;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}

@@ -1,0 +1,21 @@
+.not_found {
+  text-align: center;
+  margin-top: 20vh;
+
+  & .h {
+    font-size: 6rem;
+    font-weight: bold;
+    color: #ff5555;
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: #555555;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #777777;
+  }
+}
