@@ -12,7 +12,7 @@ body {
   font-size: 16px;
   line-height: 1.7;
   color: $color-grey-dark;
-  padding: 0.5rem;
+  // padding: 0.5rem;
 }
 
 .nav-link {
@@ -37,20 +37,6 @@ body {
   }
 }
 
-.form-control:focus ~ .form-notch div:first-child {
+.form-control:focus:not(.is-invalid) {
   border-color: $color-primary !important;
-}
-.form-control:focus ~ .form-notch div:nth-child(2) {
-  border-bottom-color: $color-primary !important;
-}
-.form-control:focus ~ .form-notch div:last-child {
-  border-color: $color-primary !important;
-}
-
-.form-control:focus ~ .form-label {
-  color: $color-primary-dark !important;
-}
-
-.form-control:focus {
-  box-shadow: none !important;
 }

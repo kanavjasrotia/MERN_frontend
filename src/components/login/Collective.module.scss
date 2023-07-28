@@ -1,0 +1,5 @@
+/* Collective.module.scss */
+@import "../../scss/animations.scss";
+.container {
+  animation: moveInBottom 1s ease-in-out;
+}

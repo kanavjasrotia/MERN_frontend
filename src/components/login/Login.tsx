@@ -65,18 +65,20 @@ const Login: React.FC<{ isshow: boolean }> = ({ isshow }) => {
     console.log(email, password);
     //CALL LOGIN METHOD
 
-    let success;
+    await login({ email, password, setError });
 
-    await toast.promise((success = login({ email, password, setError })), {
-      pending: "Logging in",
-      success: "Logged in successfully 👌",
-      error: "Login failed",
-    });
-    if ((await success) === true) {
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
-    }
+    // let success;
+
+    // await toast.promise((success = login({ email, password, setError })), {
+    //   pending: "Logging in",
+    //   success: "Logged in successfully 👌",
+    //   error: "Login failed",
+    // });
+    // if ((await success) === true) {
+    //   setTimeout(() => {
+    //     navigate("/");
+    //   }, 2000);
+    // }
   };
 
   return (

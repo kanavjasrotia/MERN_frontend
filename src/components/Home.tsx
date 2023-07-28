@@ -1,9 +1,11 @@
-import image from "../assets/undraw_welcoming_re_x0qo.svg";
+import image from "../assets/logo-white.png";
 import "./Home.scss";
+import NavBar from "./navbar/Navbar";
 
 const Home: React.FC = () => {
   return (
     <>
+      {/* <NavBar /> */}
       <header className="header">
         <div className="logo-box">
           <img src={image} className="logo" alt="logo" />

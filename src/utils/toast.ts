@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 export const notify = (message: string, type: any) => {
   toast(message, {
     type,
-    position: "top-right",
+    position: "top-left",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,

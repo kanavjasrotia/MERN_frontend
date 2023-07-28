@@ -1,0 +1,104 @@
+@import "../../scss/variables.scss";
+@import "../../scss/animations.scss";
+
+.navbar {
+  background-image: linear-gradient(
+    to right,
+    rgba($color-primary-light, 0.8),
+    rgba($color-primary, 0.8)
+  );
+
+  & img {
+    width: 4rem;
+  }
+
+  & .search {
+    & button {
+      outline: none;
+      border: none;
+      background-color: rgba($color-primary-dark, 1);
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    & input {
+      outline: none;
+      border: none;
+      padding-left: 5px;
+      font-size: 0.9rem;
+    }
+  }
+
+  // Hamburger.scss
+
+  .hamburger {
+    z-index: 9999;
+    display: none;
+    .cont {
+      width: 35px;
+    }
+
+    & .cont {
+      cursor: pointer;
+    }
+
+    & .line {
+      // float: right;
+      width: 35px;
+      height: 3px;
+      background-color: white;
+      transition: transform 0.3s ease;
+      margin-bottom: 4px;
+
+      &:nth-child(1) {
+        transform-origin: top;
+      }
+
+      &:nth-child(3) {
+        transform-origin: bottom;
+      }
+    }
+
+    &.open {
+      .line {
+        background-color: $color-primary;
+        &:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+          color: $color-primary;
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          color: $color-primary;
+          transform: translateY(-7px) rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+.sidebar-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.sidebar-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.sidebar-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.sidebar-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms, transform 300ms;
+}

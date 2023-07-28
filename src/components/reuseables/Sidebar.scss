@@ -1,0 +1,72 @@
+@import "../../scss/animations.scss";
+@import "../../scss/variables.scss";
+
+.sidebar {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  height: 100vh;
+  background-color: white;
+  z-index: 1;
+  color: $color-primary-dark;
+  text-transform: capitalize;
+  font-weight: 700;
+  text-align: center;
+  margin-right: -8px;
+
+  &.primary {
+    background-color: rgba($color-primary, $alpha: 0.8);
+  }
+
+  &.col {
+    & ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  & ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    & li {
+      list-style: none;
+
+      &:nth-child(odd) {
+        animation: moveInRight 600ms linear;
+      }
+      &:nth-child(even) {
+        list-style: none;
+        animation: moveInBottom 600ms linear;
+      }
+
+      & a {
+        color: $color-primary-dark;
+        border: 2px solid $color-primary;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+
+        &:hover {
+          transform: translateY(-px);
+          background-color: $color-primary;
+          border: none;
+          box-shadow: 3px 8px 20px $color-primary;
+          transition: all 300ms;
+          color: $color-white;
+        }
+
+        &.active {
+          background-color: $color-primary;
+          border: none;
+          box-shadow: 3px 8px 20px $color-primary;
+
+          color: $color-white;
+        }
+      }
+    }
+  }
+}

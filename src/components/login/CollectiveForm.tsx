@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MDBTabsContent } from "mdb-react-ui-kit";
 import { Container, Row, Col } from "react-bootstrap";
+
+import styles from "./Collective.module.scss";
 import Tabs from "./Tabs";
 import Register from "./Register";
 import Login from "./Login";
@@ -17,16 +19,9 @@ function CollectiveForm() {
   };
 
   return (
-    <Container>
+    <Container className={`${styles.container} `}>
       <Row className="d-flex justify-content-center">
         <Col lg={10} md={10} sm={10} xsm={11}>
-          {/* Tabs */}
-
-          <Tabs
-            handleJustifyClick={handleJustifyClick}
-            justifyActive={justifyActive}
-          />
-
           {/* Forms */}
           <Col>
             <MDBTabsContent>
@@ -36,6 +31,13 @@ function CollectiveForm() {
               <Register isshow={justifyActive === "tab2"} />
             </MDBTabsContent>
           </Col>
+
+          {/* Tabs */}
+
+          <Tabs
+            handleJustifyClick={handleJustifyClick}
+            justifyActive={justifyActive}
+          />
         </Col>
       </Row>
     </Container>

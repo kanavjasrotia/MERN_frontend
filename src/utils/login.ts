@@ -1,8 +1,25 @@
+import { toast } from "react-toastify";
 import { ILoginParams } from "../core/interface/ILoginParams";
 import { backend } from "../envVar";
+import { notify } from "./toast";
 
 export const login = async ({ email, password, setError }: ILoginParams) => {
   try {
+    await toast.promise(
+      fetch(`${backend}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }),
+      {
+        pending: "Logging in",
+        success: "Logged in successfully 👌",
+        // error: "Login failed",
+      }
+    );
+
     const response = await fetch(`${backend}/login`, {
       method: "POST",
       headers: {
@@ -16,10 +33,6 @@ export const login = async ({ email, password, setError }: ILoginParams) => {
     //set ls vars
     if (res.success === true) {
       localStorage.setItem("token", res.token);
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("email", res.email);
-      localStorage.setItem("id", res.id);
-      localStorage.setItem("role", res.role);
     }
 
     //if api is success but some error
@@ -36,13 +49,15 @@ export const login = async ({ email, password, setError }: ILoginParams) => {
       setError({ error: false, msg: "", description: "" });
       return res.success;
     }
-  } catch (error) {
+  } catch (error: any) {
     //error while running api
     console.error("An error occurred:", error);
+    toast.dismiss();
+    notify(`${error.message}`, "error");
     setError({
       error: true,
       description: "somethinh happend at the server",
-      msg: "something went wronf",
+      msg: "something went wrong",
     });
   }
 };

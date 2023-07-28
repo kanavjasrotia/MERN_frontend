@@ -4,14 +4,15 @@ import "react-bootstrap/dist/react-bootstrap.min.js.LICENSE.txt";
 import "./scss/index.scss";
 
 import Root from "./pages/Root";
-import Home from "./components/Home";
+import HomePage from "./pages/HomePage";
 import NotFound from "./components/error/PageNotFound";
 import Login from "./pages/LoginPage";
-import cart from "./Cart";
+import withAuthentication from "./hoc/withAuthentication";
+import AddProductsPage from "./pages/shop_admin/AddProduct";
+import { ERole } from "./core/enum/Erole";
+import ShopRoot from "./pages/shop_admin/ShopRoot";
 
-import withAuth from "./hoc/withAuth";
-
-const AuthCart = withAuth(cart);
+const ProtectedAppProducts = withAuthentication(AddProductsPage, ERole.Shop);
 
 const router = createBrowserRouter([
   {
@@ -19,15 +20,24 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <NotFound />,
     children: [
-      { path: "/", element: <Home /> },
+      { path: "/", index: true, element: <HomePage /> },
       { path: "/login", element: <Login /> },
-      { path: "/cart", element: <AuthCart name="kanav" /> },
     ],
+  },
+  {
+    path: "shopAdmin",
+    element: <ShopRoot />,
+    children: [{ path: "addProduct", element: <ProtectedAppProducts /> }],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      {/* <ToastContainer /> */}
+      <RouterProvider router={router} />;
+    </>
+  );
 }
 
 export default App;
